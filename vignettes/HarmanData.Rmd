@@ -1,0 +1,80 @@
+
+```{r style, echo = FALSE, results = 'asis'}
+BiocStyle::markdown()
+```
+
+---
+title: "HarmanData: gene expression data to use with batch correction package Harman"
+author: "Jason Ross and Yalchin Oytam"
+date: "`r doc_date()`"
+package: "`r pkg_ver('HarmanData')`"
+abstract: >
+  Vignette Abstract
+output: 
+  BiocStyle::html_document
+vignette: >
+  %\VignetteIndexEntry{HarmanData}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}  
+---
+
+# Overview
+This package provides the data used in the package `r Biocpkg("Harman")`. It contains three datasets. The data and its processing is described below. For usage of the data for batch correction analyses please refer to the `r Biocpkg("Harman")` vignette.
+
+*The HarmanData package is available from Bioconductor (`r Biocpkg("HarmanData")`) or Github (`r Githubpkg("JasonR055/HarmanData")`).*
+
+Overview of the datasets included in HarmanData:
+
+object | description
+-------- | ----------
+`IMR90` | cell-line data examining whether exposing mammalian cells to nitric oxide stabilizes mRNAs
+`NPM` | mouse data testing the skin penetration of metal oxide nanoparticles following topical application of sunscreens
+`OLF` | human olfactory stem cell line data on response to ZnO nanoparticle exposure
+
+## Usage
+
+```{r}
+## load package
+library(HarmanData)
+data(IMR90)
+data(NPM)
+data(OLF)
+head(olf.data)
+dim(olf.data)
+table(olf.info)
+```
+
+## Data structure
+All datasets in the package are represented in two `data.frame`'s. One containing the data, the other containing information on the phenotype and batch structure.
+
+### IMR90
+
+data.frame | description
+-------- | ----------
+`imr90.data` | Affymetrix HG-U133A Arrays with 22,223 probesets (rows) and 12 biological samples (columns).
+`imr90.info` | A description of the samples, with two columns, treatment and batch.
+
+Data used in the batch effect correction paper of Johnson, Li and Rabinovich. The data are from a cell-line experimental designed to reveal whether exposing mammalian cells to nitric oxide (NO) stabilizes mRNAs. The data comprises one treatment, one control and 2 time points (0 h and 7.5 h), resulting in 4 distinct (2 treatment x 2 time points) experimental conditions. There were 3 batches and a total of 12 samples, with each batch consisting of 1 replicate from each of the experimental conditions. Affymetrix HG-U133A Arrays were normalised and background adjusted as a whole using the RMA procedure in MATLAB.
+
+### NPM
+
+data.frame | description
+-------- | ----------
+`npm.data` | Affymetrix MoGene 1.0 ST array data, with 35,512 probesets (rows) and 24 biological samples (columns).
+`npm.info` | A description of the samples, with two columns, treatment and batch.
+
+An experiment to test skin penetration of metal oxide nanoparticles following topical application of sunscreens. The data comprises three treatment groups plus a control group, with six replicates in each group, making a total of 24 Affymetrix MoGene 1.0 ST arrays. There were a total of three processing batches of eight arrays, each consisting of 2 replicates per group. Arrays were normalised and background adjusted as a whole using the RMA procedure in MATLAB.
+
+### OLF
+
+data.frame | description
+-------- | ----------
+`olf.data` | has 33,297 probesets (rows) and 28 biological samples (columns).
+`olf.info` | A description of the samples, with two columns, treatment and batch.
+
+An experiment to gauge the response of human olfactory neurosphere-derived (hONS) cells established from adult donors to ZnO nanoparticles. The data comprises six treatment groups plus a control group, each consisting of four replicates, giving a total number of 28 Affymetrix HuGene 1.0 ST arrays. The arrays were broken up into four processing batches of seven arrays each, consisting of one replicate from each of the groups. Arrays were normalised and background adjusted as a whole using the RMA procedure in MATLAB.
+
+## References
+1. Johnson et al. Biostatistics (2007). [doi: 10.1093/biostatistics/kxj037](doi: 10.1093/biostatistics/kxj037).
+2. Osmond-McLeod et al. Nanotoxicology (2014). [doi: 10.3109/17435390.2013.855832](doi: 10.3109/17435390.2013.855832).
+3. Osmond-McLeod et al. Part Fibre Toxicol. (2013). [doi: 10.1186/1743-8977-10-54](doi: 10.1186/1743-8977-10-54).
