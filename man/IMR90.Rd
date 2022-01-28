@@ -6,13 +6,15 @@
 \alias{imr90.data}
 \alias{imr90.info}
 \title{IMR90 data, a Human lung fibroblast cell line.}
-\format{Two data frames. \code{imr90.data} has 22,223 probesets (rows) and 12
+\format{
+Two data frames. \code{imr90.data} has 22,223 probesets (rows) and 12
 samples (columns). While \code{imr90.info} is a description of the samples,
 with two columns:
 \describe{
   \item{\code{Treatment}}{the treatment applied to the cells}
   \item{\code{Batch}}{batch processing number}
-}}
+}
+}
 \usage{
 data(IMR90)
 }
@@ -40,4 +42,3 @@ doi: 10.1093/biostatistics/kxj037
 \keyword{Harman}
 \keyword{data}
 \keyword{datasets}
-

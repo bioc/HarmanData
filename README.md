@@ -1,6 +1,7 @@
 # Data for Harman
 
-Harman, the removal of batch effects from datasets using a PCA and constrained optimisation based technique.
+Harman, the removal of batch effects from datasets using a PCA and constrained
+optimisation based technique.
 
 To use this data:
 ```R

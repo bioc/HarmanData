@@ -6,15 +6,14 @@
 \alias{olf.data}
 \alias{olf.info}
 \title{Olfactory stem cell study data}
-\format{Two data frames. \code{olf.data} has 33,297 probesets (rows) and 28
+\format{
+Two data frames. \code{olf.data} has 33,297 probesets (rows) and 28
 biological samples (columns). While \code{olf.info} is a description of the
 samples, with two columns:
 \describe{
   \item{\code{Treatment}}{the treatment applied}
   \item{\code{Batch}}{batch processing number}
-}}
-\source{
-\url{http://www.example.com/}
+}
 }
 \usage{
 data(OLF)
@@ -39,4 +38,3 @@ data(OLF)
 Osmond-McLeod et al. Part Fibre Toxicol. (2013).
 doi: 10.1186/1743-8977-10-54
 }
-

@@ -6,13 +6,15 @@
 \alias{npm.data}
 \alias{npm.info}
 \title{Non-pregant mice study data}
-\format{Two data frames. \code{npm.data} has 35,512 probesets (rows) and 24
+\format{
+Two data frames. \code{npm.data} has 35,512 probesets (rows) and 24
 biological samples (columns). While \code{npm.info} is a description of the
 samples, with two columns:
 \describe{
   \item{\code{Treatment}}{the treatment applied to the mice}
   \item{\code{Batch}}{batch processing number}
-}}
+}
+}
 \usage{
 data(NPM)
 }
@@ -35,4 +37,3 @@ data(NPM)
 Osmond-McLeod et al. Nanotoxicology (2014).
 doi: 10.3109/17435390.2013.855832
 }
-

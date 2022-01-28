@@ -78,10 +78,30 @@ NULL
 #'   \item{\code{Batch}}{batch processing number}
 #' }
 #' @return \code{\link{promise}}
-#' @source \url{http://www.example.com/}
 #' @references Osmond-McLeod et al. Part Fibre Toxicol. (2013).
 #' doi: 10.1186/1743-8977-10-54
 #' @examples
 #' data(OLF)
 #"OLF"
+NULL
+
+
+#' @title Infinium Methylation BeadChip batch correction reference data
+#' @name Infinium5
+#' @aliases lvr.combat lvr.harman md.combat md.harman
+#' @docType data
+#' @description Summary statistics after batch-effect correction per CpG probe
+#' across 5 Infinium Methylation datasets.
+#' @usage data(Infinium5)
+#' @format Four matrices each with 899255 rows and 5 columns. One row per CpG
+#' site across the 450K and EPIC designs and one column for each of the
+#' reference datasets. \code{lvr.combat} and \code{lvr.harman} are the matrices
+#' of log variance ratio (LVR) statistics for ComBat and Harman, respectively.
+#' While, \code{md.combat} and \code{md.harman} are the matrices of mean
+#' differences post-batch correction.
+#' @return \code{\link{promise}}
+#' @references ... awaiting publication
+#' @examples
+#' data(Infinium5)
+#"Infinium5"
 NULL
