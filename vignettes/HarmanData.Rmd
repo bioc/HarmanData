@@ -166,6 +166,42 @@ md.harman["cg01381374", ]
 ```
 
 
+### episcope
+
+Example beta values from the EpiSCOPE study. A thin slice of reference data to
+use as an example for the beta clustering functions in Harman. The data contains
+beta values spanning 11 CpG probesets from the 369 arrays of the EpiSCOPE study
+(van Dijk, 2106). The 450K methylation data arises from neonate blood spots from
+children enrolled in the DOMInO (DHA to Optimise Mother Infant Outcome) cohort.
+
+list slot | description
+-------- | ----------
+`pd` | `Phenotypic descriptors for the 369 samples`
+`original` | `Original uncorrected data from the study`
+`harman` | `Harman corrected data`
+`combat` | `ComBat corrected data`
+`ref_lvr` | `Reference log2 variance ratios for the 11 probes`
+`ref_md` | `Reference mean difference in beta for the 11 probes`
+
+
+### Usage
+
+```{r}
+library(Harman)
+library(HarmanData)
+data(episcope)
+bad_batches <- c(1, 5, 9, 17, 25)
+is_bad_sample <- episcope$pd$array_num %in% bad_batches
+myK <- discoverClusteredMethylation(episcope$original[, !is_bad_sample])
+mykClust = kClusterBetas(episcope$original, k=myK)
+res = ClusterStatistics(pre_betas=episcope$original,
+                        post_betas=episcope$harman,
+                        clusters = mykClust)
+all.equal(episcope$ref_md$meandiffs_harman, res$meandiffs)
+all.equal(episcope$ref_lvr$var_ratio_harman, res$log2_var_ratio)
+```
+
+
 ## References
 1. Johnson et al. Biostatistics (2007). [doi: 10.1093/biostatistics/kxj037](doi: 10.1093/biostatistics/kxj037).
 2. Osmond-McLeod et al. Nanotoxicology (2014). [doi: 10.3109/17435390.2013.855832](doi: 10.3109/17435390.2013.855832).

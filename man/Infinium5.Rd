@@ -11,10 +11,14 @@
 \format{
 Four matrices each with 899255 rows and 5 columns. One row per CpG
 site across the 450K and EPIC designs and one column for each of the
-reference datasets. \code{lvr.combat} and \code{lvr.harman} are the matrices
-of log variance ratio (LVR) statistics for ComBat and Harman, respectively.
-While, \code{md.combat} and \code{md.harman} are the matrices of mean
-differences post-batch correction.
+reference datasets. The matrices contain log variance ratio (LVR) statistics
+for ComBat and Harman and mean differences post-batch correction:
+\describe{
+  \item{\code{lvr.combat}}{LVR for ComBat}
+  \item{\code{lvr.harman}}{LVR for Harman}
+  \item{\code{md.combat}}{mean differences for ComBat}
+  \item{\code{md.harman}}{mean differences for Harman}
+}
 }
 \usage{
 data(Infinium5)

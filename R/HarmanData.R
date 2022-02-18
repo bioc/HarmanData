@@ -95,13 +95,54 @@ NULL
 #' @usage data(Infinium5)
 #' @format Four matrices each with 899255 rows and 5 columns. One row per CpG
 #' site across the 450K and EPIC designs and one column for each of the
-#' reference datasets. \code{lvr.combat} and \code{lvr.harman} are the matrices
-#' of log variance ratio (LVR) statistics for ComBat and Harman, respectively.
-#' While, \code{md.combat} and \code{md.harman} are the matrices of mean
-#' differences post-batch correction.
+#' reference datasets. The matrices contain log variance ratio (LVR) statistics
+#' for ComBat and Harman and mean differences post-batch correction:
+#' \describe{
+#'   \item{\code{lvr.combat}}{LVR for ComBat}
+#'   \item{\code{lvr.harman}}{LVR for Harman}
+#'   \item{\code{md.combat}}{mean differences for ComBat}
+#'   \item{\code{md.harman}}{mean differences for Harman}
+#' }
 #' @return \code{\link{promise}}
 #' @references ... awaiting publication
 #' @examples
 #' data(Infinium5)
 #"Infinium5"
 NULL
+
+
+#' Example beta values from the EpiSCOPE study
+#' @title Infinium Methylation BeadChip batch correction reference data
+#' @name episcope
+#' @docType data
+#' @description A reference dataset containing beta values spanning 11 CpG
+#' probesets from the 369 arrays of the EpiSCOPE study (van Dijk, 2106). The
+#' 450K methylation data arises from neonate blood spots from children enrolled
+#' in the DOMInO (DHA to Optimise Mother Infant Outcome) cohort.
+#' @usage data(episcope)
+#' @format A list with 6 entities:
+#' \describe{
+#'   \item{pd}{Phenotypic descriptors for the 369 samples}
+#'   \item{original}{Original uncorrected data from the study}
+#'   \item{harman}{Harman corrected data}
+#'   \item{combat}{ComBat corrected data}
+#'   \item{ref_lvr}{Reference log2 variance ratios for the 11 probes}
+#'   \item{ref_md}{Reference mean difference in beta for the 11 probes}
+#' }
+#' @return \code{\link{promise}}
+#' @references \url{https://doi.org/10.1186/s13148-016-0281-7/}
+#' @examples
+#' library(Harman)
+#' data(episcope)
+#' bad_batches <- c(1, 5, 9, 17, 25)
+#' is_bad_sample <- episcope$pd$array_num %in% bad_batches
+#' myK <- discoverClusteredMethylation(episcope$original[, !is_bad_sample])
+#' mykClust = kClusterBetas(episcope$original, k=myK)
+#' res = ClusterStatistics(pre_betas=episcope$original,
+#'                         post_betas=episcope$harman,
+#'                         clusters = mykClust)
+#' all.equal(episcope$ref_md$meandiffs_harman, res$meandiffs)
+#' all.equal(episcope$ref_lvr$var_ratio_harman, res$log2_var_ratio)
+#"episcope"
+NULL
+
